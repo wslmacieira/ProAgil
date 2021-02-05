@@ -5,12 +5,15 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/Evento';
 import { EventoService } from 'src/app/services/Evento.service';
-
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
 @Component({
   selector: 'app-evento-edit',
   templateUrl: './eventoEdit.component.html',
   styleUrls: ['./eventoEdit.component.css']
 })
+
 export class EventoEditComponent implements OnInit {
 
   titulo = 'Editar Evento';
@@ -116,15 +119,15 @@ export class EventoEditComponent implements OnInit {
     this.redesSociais.removeAt(id);
   }
 
-  onFileChange(file: FileList): void {
+  onFileChange(e?: HTMLInputEvent, file?: any): void {
     const reader = new FileReader();
 
     reader.onload = (event: any) => this.imagemURL = event.target.result;
 
-    this.file = event.target.files
-    reader.readAsDataURL(file[0]);
+    file = e.target.files;
 
-    console.log();
+    console.log(file[0])
+    reader.readAsDataURL(file[0]);
   }
 
   salvarEvento() {
@@ -143,7 +146,6 @@ export class EventoEditComponent implements OnInit {
   }
 
   uploadImagem() {
-    this.evento.imagemURL = this.fileNameToUpdate;
     if (this.registerForm.get('imagemURL').value !== '') {
       this.eventoService.postUpload(this.file, this.fileNameToUpdate)
       .subscribe(
