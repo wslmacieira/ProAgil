@@ -5,6 +5,7 @@ bin
 obj
 global.json
 ProAgil.WebApi/ProAgil.db
+.vs/ProAgil/
 
 # compiled output
 ProAgil-App/dist
