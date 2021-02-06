@@ -23,8 +23,8 @@ constructor(private http: HttpClient) { }
     return this.http.get<Evento>(`${this.baseUrl}/${id}`);
   }
 
-  postUpload(file: File, name: string): Observable<any> {
-    const fileToUpload = file[0] as File;
+  postUpload(file: any, name: string): Observable<any> {
+    const fileToUpload = file[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, name);
 
