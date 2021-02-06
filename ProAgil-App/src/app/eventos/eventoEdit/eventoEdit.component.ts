@@ -23,7 +23,7 @@ export class EventoEditComponent implements OnInit {
   registerForm: FormGroup;
   fileNameToUpdate: string;
   dataAtual: any;
-  file: File;
+  file: FileList;
 
   get lotes(): FormArray {
     return <FormArray> this.registerForm.get('lotes');
@@ -119,15 +119,15 @@ export class EventoEditComponent implements OnInit {
     this.redesSociais.removeAt(id);
   }
 
-  onFileChange(e?: HTMLInputEvent, file?: any): void {
+  onFileChange(e?: HTMLInputEvent): void {
     const reader = new FileReader();
 
     reader.onload = (event: any) => this.imagemURL = event.target.result;
+    this.file = e.target.files;
 
-    file = e.target.files;
 
-    console.log(file[0])
-    reader.readAsDataURL(file[0]);
+    console.log(this.file[0])
+    reader.readAsDataURL(this.file[0]);
   }
 
   salvarEvento() {
