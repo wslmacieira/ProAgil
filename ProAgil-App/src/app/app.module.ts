@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -59,6 +60,7 @@ import { EventoEditComponent } from './eventos/eventoEdit/eventoEdit.component';
       progressBar: true
     }),
     NgxMaskModule.forRoot(),
+    NgxCurrencyModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
