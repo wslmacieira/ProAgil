@@ -94,6 +94,7 @@
                   {{ lotes.get(i+'.nome').value == '' ?
                   'Lotes' : lotes.get(i+'.nome').value
                   }}
+
                   <button class="btn btn-sm btn-warning mb-1" (click)="removerLote(i)">remove</button>
                 </legend>
                 <div class="row">
@@ -225,8 +226,9 @@
           </p>
           <div class="row">
             <div class="icon-block col-md-8 iconesSociais">
-              <a class="mr-3" target="_blank">
-                <i class="fab fa-youtube"></i>
+              <a href="{{redesSociais.get(l+'.url').value}}"
+              *ngFor="let redeSocial of redesSociais.controls; let l=index;" class="mr-3" target="_blank">
+                <i class="{{redesSociais.get(l+'.nome').value}}"></i>
               </a>
             </div>
             <!--div class="col-md-4 d-flex justify-content-center">

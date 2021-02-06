@@ -87,7 +87,7 @@ export class EventoEditComponent implements OnInit {
   criaLote(lote: any): FormGroup {
     return this.fb.group({
       id: [lote.id],
-      nome: ['', Validators.required],
+      nome: [lote.nome, Validators.required],
       quantidade: [lote.quantidade, Validators.required],
       preco: [lote.preco, Validators.required],
       dataInicio: [lote.dataInicio],
@@ -98,7 +98,7 @@ export class EventoEditComponent implements OnInit {
   criaRedeSocial(redeSocial: any): FormGroup {
     return this.fb.group({
       id: [redeSocial.id],
-      nome: ['', Validators.required],
+      nome: [redeSocial.nome, Validators.required],
       url: [redeSocial.url, Validators.required],
     });
   }
@@ -140,7 +140,7 @@ export class EventoEditComponent implements OnInit {
       () => {
         this.toastr.success('Editado com Sucesso');
       }, error => {
-        this.toastr.error(`Erro ao Inserir: ${error}`);
+        this.toastr.error(`Erro ao Atualizar: ${error}`);
       }
     );
   }
